@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="discription" content="ドットインストール詳細HTMLフォーム部品編">
+  <title>ドットインストール詳細HTMLフォーム部品編</title>
+</head>
+<body>
+  <h1>一行テキストを入力する部品</h1>
+  <h2>1行のフォームはinputタグ</h2>
+  <input type="text">
+  <h2>value属性で初期値を設定したフォーム</h2>
+  <input type="text" value="hello">
+  <h2>パスワードなど、初期値を伏せ字にするにはtype属性をpasswordにする</h2>
+  <input type="password">
+  <h2>入力例を示してわかりやすくするにはplaceholder属性に入力例を入れる</h2>
+  <input type="text" placeholder="山田太郎">
+  <h2>複数行のフォームはtextareaタグ</h2>
+  <textarea>初期値はvalue属性ではなくて、直接タグの中に書く</textarea>
+
+  <hr>
+  <h2>ラベルに関して</h2>
+  <p>入力部品の説明にはplaceholder属性よりもlabelタグを使うのが望ましい。<br>
+    読み上げブラウザは対応するlabelを読み上げるため、紐付けておくと親切。
+  </p>
+  <h3>書き方1</h3>
+  <label for="name">名前</label>
+  <input type="text" id="name">
+  <p><img src="img/lavel1.png"></p>
+
+  <h3>書き方2</h3>
+  <label>名前<input type="text"></label>
+  <p><img src="img/lavel2.png"></p>
+  <hr>
+
+  <h2>ドロップダウンリスト</h2>
+  <p>
+    ドロップダウンリストを作成するにはselectタグと子要素としてoptionタグを使う。<br>
+    selectタグはsize属性で表示する行数の指定を、multipleタグで複数選択の指定を出来る。<br>
+    初期値を指定したいときは、optionタグにselectdを入力すると初期値になる。
+  </p>
+  
+  <label for="color">好きな色</label>
+  <select size="2" multiple id="color">
+    <option>色1</option>
+    <option>色2</option>
+    <option>色3</option>
+    <option>色4</option>
+    <option selected>色5</option>
+  </select>
+  <hr>
+
+  <h2>チェックボックス</h2>
+  <p>複数選択可能なものに使用する。<br>
+    inputタグの属性をcheckboxにするとチェックボックスになる。<br>
+    checked 属性を付けると予めチェックしておくことができる。<br>
+    labelと組み合わせると名前を押すとチェックが入るので便利。
+  </p>
+  <label><input type="checkbox" checked>iphone</label>
+  <label><input type="checkbox">Android</label>
+  <label><input type="checkbox">その他</label>
+  
+  <h3>入力部品をグループ化するタグ</h3>
+  <p>チェックボックスやラジオボタンとセットでよく使われる。<br>
+    fieldsetタグで全体を囲む、legendタグでキャプションを付ける</p>
+  <fieldset>
+    <legend>お使いのスマホ(複数選択可）</legend>
+    <label><input type="checkbox" checked>iphone</label>
+    <label><input type="checkbox">Android</label>
+    <label><input type="checkbox">その他</label>
+  </fieldset>
+  <hr>
+  
+  <h2>ラジオボタン</h2>
+  <p>一つだけ選択させたいときに使う。<br>
+    inputタグの属性をradioにするとチェックボックスになる。<br>
+    radioボタンの場合、これらは同じ項目に対する選択肢だということを明示する必要がある。<br>
+    name属性を使って値を同じものに設定すると1つだけ選択するようにできる。
+  </p>
+  <fieldset>
+    <legend>一番好きなスマホ(1つだけ選択）
+    </legend>
+    <label><input type="radio" name="phone" checked>iphone</label>
+    <label><input type="radio" name="phone">Android</label>
+    <label><input type="radio" name="phone">その他</label>
+  </fieldset>
+  <hr>
+
+  <h2>HTML5で使えるフォーム部品</h2>
+  <p>モダンなブラウザだけで使える部品。inputの属性を変更すると使用できる。<br>
+  ただし、旧ブラウザでサポートされてないので現場ではそんなに使われていない</p>
+  <p>カラーピッカー<br><input type="color"></p>
+  <p>日付入力<br><input type="date"></p>
+  <p>数字入力<br><input type="number"></p>
+  <p>スライダー<br><input type="range"></p>
+  <hr>
+
+  <h2>ボタン</h2>
+  <p>inputタグを使う方法とbuttonタグを使う方法がある。<br>
+    buttonタグを使えば、タグの中に画像を入れたりすることもできる。<br>
+    disabled属性を付けることで入力部品を無効化できる。
+  </p>
+  <input type="button" value="OK">
+  <button>OK</button>
+
+  <input type="button" value="OK" disabled>
+  <button disabled>OK</button>
+  <hr> 
+
+  <h2>フォームタグの使い方</h2>
+  <p>
+    入力された値をまとめて何らかのプログラムに送信したい場合、全体をformタグで囲ってあげればOK。<br>
+    <ul>
+      <li>action 属性で送信先プログラムのファイル名を指定</li>
+      <li>fornタグにデータの送信方式をmethod属性で指定</li>
+      <li>プログラム側でどれがどの値かわかるようにinputタグに識別子を付ける</li>
+    </ul>
+    formタグの中のbuttonタグのボタンをクリックしたら、入力された値を、指定した送信先プログラムに、指定した送信形式で送信する。
+  </p>
+  <form action="process.php" method="POST"> 
+    <label>名前<input type="text" name="username"></label>
+    <label>タスク<input type="text" name="task"></label>
+    <button>送信</button>
+  </form>
+
+</body>
+</html>
